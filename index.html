@@ -142,17 +142,15 @@
       </ul>
     </section>
 
-<iframe src="https://docs.google.com/forms/d/1iVQWHx4QsoZTcUJtLqIKEew5Kk2X9AMcNVDpebMtvfA/viewform?embedded=true" width="760" height="500" frameborder="0" marginheight="0" marginwidth="0">Loading...</iframe>
     <section id="petition-form" class="petition">
       <h3>Sign on as a supporter</h3>
-      <form
-        class="form-petition" accept-charset="UTF-8" action="https://formkeep.com/f/9a5e8d0c6401" method="POST">
+      <form id="form" class="form-petition" accept-charset="UTF-8" action="">
   <input type="hidden" name="utf8" value="✓">
-        <input type="text" name="firstname" required placeholder="First Name">
-        <input type="text" name="lastname" required placeholder="Last Name">
-        <input type="email" name="email" required placeholder="Email">
-        <input type="number" name="zipcode" required placeholder="Zip Code">
-        <button type="submit">Sign Up</button>
+        <input id="firstName" type="text" name="firstname" required placeholder="First Name">
+        <input id="lastName" type="text" name="lastname" required placeholder="Last Name">
+        <input id="email" type="email" name="email" required placeholder="Email">
+        <input id="zipCode" type="number" name="zipcode" required placeholder="Zip Code">
+        <button id="submitButton" value="Sign up">Sign up</button>
       </form>
       <div>
         <hr>
@@ -213,23 +211,35 @@ $(function() {
   }, 100);
 
   // submit petition form, show thanks and social
-  $('.form-petition').submit(function() {
+  $('#submitButton').click(function() {
     event.preventDefault();
-
     var petitionForm = $(this);
 
     $.ajax({
       type: 'POST',
-      url: petitionForm.prop('action'),
-      accept: {
-        javascript: 'application/javascript'
+      url: "https://docs.google.com/forms/d/1iVQWHx4QsoZTcUJtLqIKEew5Kk2X9AMcNVDpebMtvfA/formResponse",
+      data: {
+      	'entry.1042999987': $('#firstName').val(),
+      	'entry.335922915': $('#lastName').val(),
+      	'entry.712033864': $('#email').val(),
+      	'entry.1751214748': $('#zipCode').val()
       },
-      data: petitionForm.serialize()
+
+      accepts: {
+        javascript: 'application/javascript'
+      }
     })
-    .done(function(data) {
+    .done(function() {
+    	alert("jedi");
       $('#petition-form').hide();
       $('#petition-confirmation').show();
-    });
+    })
+    .fail(function() {
+    	alert("failing");
+    })
+    .always(function() {
+    	alert("complete");
+    })
   });
 });
 </script>
