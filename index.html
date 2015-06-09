@@ -149,6 +149,8 @@
         <input id="lastName" type="text" name="lastname" required placeholder="Last Name">
         <input id="email" type="email" name="email" required placeholder="Email">
         <input id="zipCode" type="number" name="zipcode" required placeholder="Zip Code">
+        <input id="Organization" type="text" name="organization" required placeholder="Organization">
+        <input id="Position" type="text" name="position" required placeholder="Position">
         <button id="submitButton" value="Sign up">Sign up</button>
       </form>
       <div>
@@ -177,7 +179,7 @@
 </div>
 <div class="footer">
   <div class="container">
-        Built with <span class="glyphicon glyphicon-heart"></span> by <a href="http://codeforBirmingham.org/"><span style="color: deepskyblue">Code </span><span style="color: #cf1b41">For Birmingham</span></a>
+        Built with <span class="glyphicon glyphicon-heart"></span> by <a href="http://codeforBirmingham.org/"><span style="color: deepskyblue">Code for Birmingham</span></a>
     </div>
   </div>
 
@@ -221,7 +223,9 @@ $(function() {
       	'entry.1042999987': $('#firstName').val(),
       	'entry.335922915': $('#lastName').val(),
       	'entry.712033864': $('#email').val(),
-      	'entry.1751214748': $('#zipCode').val()
+      	'entry.1751214748': $('#zipCode').val(),
+        'entry': $('#Organization').val(),
+        'entry'; $('#Position').val()
       },
 
       accepts: {
