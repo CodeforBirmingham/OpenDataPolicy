@@ -13,9 +13,7 @@
     $(".sidenav [href=#]").click(function(e) {
       return e.preventDefault();
     });
-    $('.sidebar').on('activate.bs.scrollspy', function() {
-      return console.log('scroll spyed');
-    });
+  
     return $("a[href*=#]:not([href=#])").click(function() {
       var target;
       if (location.pathname.replace(/^\//, "") === this.pathname.replace(/^\//, "") || location.hostname === this.hostname) {
